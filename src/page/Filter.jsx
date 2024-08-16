@@ -1,6 +1,9 @@
+import { useRouteLoaderData } from "react-router";
 import TipsCard from "../components/tips-card";
 
 export default function Filter() {
+  const tips = useRouteLoaderData("root")
+
   return (
     <section className="grid md:grid-cols-[0.5fr_4fr] gap-2 h-screen overflow-hidden">
        <div className="flex gap-2 flex-col sm:flex-row sm:items-center md:items-start md:flex-col md:mt-5 px-4 h-full">
@@ -107,26 +110,15 @@ export default function Filter() {
       </ul>
       </div>
       <aside className="flex flex-wrap md:grid md:grid-cols-3  justify-evenly gap-5 p-4 bg-slate-300  overflow-auto">
-      <TipsCard />
-        <TipsCard />
-        <TipsCard />
-        <TipsCard />
-        <TipsCard />
-        <TipsCard />
-        <TipsCard />
-        <TipsCard />
-        <TipsCard />
-        <TipsCard />
-        <TipsCard />
-        <TipsCard />
-        <TipsCard />
-        <TipsCard />
-        <TipsCard />
-        <TipsCard />
-        <TipsCard />
-        <TipsCard />
-        <TipsCard />
-        <TipsCard />
+      {tips.map((tip, index) => (
+          <TipsCard
+            key={index}
+            image={tip.image}
+            title={tip.title}
+            tag={tip.tag}
+            description={tip.description}
+          />
+        ))}
       </aside>
     </section>
   )
