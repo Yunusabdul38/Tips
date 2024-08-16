@@ -1,5 +1,6 @@
-import { useRouteLoaderData } from "react-router";
+import { redirect, useRouteLoaderData } from "react-router";
 import TipsCard from "../components/tips-card";
+import { Form } from "react-router-dom";
 
 export default function Filter() {
   const tips = useRouteLoaderData("root")
@@ -10,13 +11,14 @@ export default function Filter() {
       <h3 className="font-medium text-gray-900 dark:text-white">
         Tag
       </h3>
+      <Form method="GET" >
       <ul className="grid grid-cols-2 sm:flex-row md:flex-col items-center w-full mx-auto justify-center text-sm font-medium text-gray-900 bg-white md:border-none capitalize border border-gray-200 rounded-lg sm:flex">
         <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r md:border-r-0">
           <div className="flex items-center ps-3 md:ps-0">
             <input
-              id="javascript"
+            name="tag"
               type="checkbox"
-              value=""
+              value="javascript"
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
             />
             <label
@@ -30,9 +32,9 @@ export default function Filter() {
         <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r md:border-r-0">
           <div className="flex items-center ps-3 md:ps-0">
             <input
-              id="python"
+            name="tag"
               type="checkbox"
-              value=""
+              value="python"
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
             />
             <label
@@ -46,9 +48,9 @@ export default function Filter() {
         <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r md:border-r-0">
           <div className="flex items-center ps-3 md:ps-0">
             <input
-              id="java"
+            name="tag"
               type="checkbox"
-              value=""
+              value="java"
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
             />
             <label
@@ -62,9 +64,9 @@ export default function Filter() {
         <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r md:border-r-0">
           <div className="flex items-center ps-3 md:ps-0">
             <input
-              id="rubby"
+            name="tag"
+              value="rubby"
               type="checkbox"
-              value=""
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
             />
             <label
@@ -78,9 +80,9 @@ export default function Filter() {
         <li className="w-full border-gray-200 sm:border-b-0 sm:border-r md:border-r-0">
           <div className="flex items-center ps-3 md:ps-0">
             <input
-              id="go"
+            name="tag"
+              value="go"
               type="checkbox"
-              value=""
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
             />
             <label
@@ -94,9 +96,9 @@ export default function Filter() {
         <li className="w-full dark:border-gray-600">
           <div className="flex items-center ps-3 md:ps-0">
             <input
-              id="C++"
+            name="tag"
+              value="C++"
               type="checkbox"
-              value=""
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
             />
             <label
@@ -108,6 +110,7 @@ export default function Filter() {
           </div>
         </li>
       </ul>
+      </Form>
       </div>
       <aside className="flex flex-wrap md:grid md:grid-cols-3  justify-evenly gap-5 p-4 bg-slate-300  overflow-auto">
       {tips.map((tip, index) => (
@@ -122,4 +125,15 @@ export default function Filter() {
       </aside>
     </section>
   )
+}
+
+export const action = async ({request})=>{
+  const data = await request.formData()
+ 
+  const userData = {
+    tag:data.get("tag"),
+  }
+
+  console.log(userData)
+  //redirect("/")
 }

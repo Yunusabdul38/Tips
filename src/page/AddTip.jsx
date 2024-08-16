@@ -1,8 +1,8 @@
-import { Form } from "react-router-dom";
+import { Form, redirect } from "react-router-dom";
 
 export default function AddTip() {
   return (
-    <Form className="capitalize">
+    <Form className="capitalize" method="POST" encType="multipart/form-data">
       <div className="flex gap-1 lg:gap-3 items-start lg:justify-end flex-col mx-auto  w-4/5 max-w-lg lg:max-w-none mt-4 relative">
         <label className="font-normal lg:font-semibold text-base">title:</label>
         <input
@@ -36,14 +36,14 @@ export default function AddTip() {
         <h3 className="mb-4 font-semibold text-gray-900 dark:text-white">
           Tag
         </h3>
-        <ul className="grid grid-cols-2 items-center w-full mx-auto justify-center text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex">
+        <ul className="grvalue grvalue-cols-2 items-center w-full mx-auto justify-center text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex">
           <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r">
             <div className="flex items-center ps-3">
               <input
                 name="tag"
-                id="javascript"
+                value="javascript"
                 type="radio"
-                
+                id="javascript"
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
               />
               <label
@@ -58,9 +58,9 @@ export default function AddTip() {
             <div className="flex items-center ps-3">
               <input
                 name="tag"
-                id="python"
+                value="python"
                 type="radio"
-                
+                id="python"
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
               />
               <label
@@ -75,9 +75,9 @@ export default function AddTip() {
             <div className="flex items-center ps-3">
               <input
                 name="tag"
-                id="java"
+                value="java"
                 type="radio"
-                
+                id="java"
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
               />
               <label
@@ -92,9 +92,9 @@ export default function AddTip() {
             <div className="flex items-center ps-3">
               <input
                 name="tag"
-                id="rubby"
+                value="rubby"
                 type="radio"
-                
+                id="rubby"
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
               />
               <label
@@ -109,9 +109,9 @@ export default function AddTip() {
             <div className="flex items-center ps-3">
               <input
                 name="tag"
-                id="go"
+                value="go"
                 type="radio"
-                
+                id="go"
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
               />
               <label
@@ -126,9 +126,9 @@ export default function AddTip() {
             <div className="flex items-center ps-3">
               <input
                 name="tag"
-                id="C++"
+                value="C++"
                 type="radio"
-                
+                id="C++"
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
               />
               <label
@@ -153,6 +153,21 @@ export default function AddTip() {
           
         />
       </div>
+      <button type="submit" className="px-6 py-3 capitalize border border-gray-800 bg-gray-800 hover:bg-slate-50 text-slate-50 hover:text-black">submit</button>
     </Form>
   );
+}
+
+export const action = async ({request})=>{
+  const data = await request.formData()
+ 
+  const userData = {
+    title:data.get("title"),
+    image:data.get("image")[0],
+    tag:data.get("tag"),
+    description:data.get("description")
+  }
+
+  console.log(request,data.get("image"))
+  redirect("/")
 }
