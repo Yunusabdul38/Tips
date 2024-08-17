@@ -8,7 +8,7 @@ const item = {
 export default function TipsCard({image,title,tag,description}) {
   return (
     <motion.div
-      className="bg-slate-50 text-slate-900 border rounded-lg min-h-72 max-h-80 h-[320px] max-w-96 cursor-pointer"
+      className="bg-slate-50 text-slate-900 border rounded-lg min-h-72 h-auto max-h-96 max-w-80 cursor-pointer"
       variants={item}
       initial="hid"
       whileInView="show"
@@ -18,7 +18,7 @@ export default function TipsCard({image,title,tag,description}) {
       <div className="px-5 py-3">
         <h1 className="capitalize font-medium text-2xl">{title}</h1>
         <h3 className="capitalize font-normal text-xl">{tag}</h3>
-        <p>
+        <p className="text-sm sm:text-base">
           {description}
         </p>
       </div>

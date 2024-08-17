@@ -1,7 +1,11 @@
-import { Form, redirect } from "react-router-dom";
+import { Form, useRouteLoaderData } from "react-router-dom";
+import TipsCard from "../components/tips-card";
 
 export default function AddTip() {
+  const data = useRouteLoaderData("root");
+  const tip = [data[0],data[1],data[2]]
   return (
+    <>
     <Form className="capitalize" method="POST" encType="multipart/form-data">
       <div className="flex gap-1 lg:gap-3 items-start lg:justify-end flex-col mx-auto  w-4/5 max-w-lg lg:max-w-none mt-4 relative">
         <label className="font-normal lg:font-semibold text-base">title:</label>
@@ -152,9 +156,21 @@ export default function AddTip() {
           required
           
         />
+         <button type="submit" className="px-6 py-3 capitalize border border-gray-800 bg-gray-800 hover:bg-slate-50 text-slate-50 hover:text-black mx-auto  w-4/5 max-w-lg lg:max-w-none mt-4">submit</button>
       </div>
-      <button type="submit" className="px-6 py-3 capitalize border border-gray-800 bg-gray-800 hover:bg-slate-50 text-slate-50 hover:text-black">submit</button>
     </Form>
+    <section className="flex flex-wrap justify-evenly gap-5 bg-slate-50 p-4 mt-10">
+    { tip.map((tip, index) => (
+          <TipsCard
+            key={index}
+            image={tip.image}
+            title={tip.title}
+            tag={tip.tag}
+            description={tip.description}
+          />
+        ))}
+    </section>
+    </>    
   );
 }
 
@@ -169,5 +185,4 @@ export const action = async ({request})=>{
   }
 
   console.log(request,data.get("image"))
-  redirect("/")
 }
