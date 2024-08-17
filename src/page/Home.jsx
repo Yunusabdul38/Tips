@@ -1,10 +1,40 @@
 import hero from "../assets/PNG/4 SCENE.png";
 import TipsCard from "../components/tips-card";
 import { useRouteLoaderData } from "react-router";
+import jsonData from "../../db.json";
+import { useSearchParams } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
+import EmptyData from "../components/Empty-data";
 
 export default function Home() {
-  const tips = useRouteLoaderData("root")
+  const [searchParams] = useSearchParams();
+  const tipData = useRouteLoaderData("root");
+  const [tips, setTips] = useState(tipData);
   
+  const query = useMemo(() => {
+    if(searchParams.has("q") && searchParams.get("q")==="") {
+      return searchParams.append("q","all-data")
+    }
+    const word = searchParams.get("q")?.split(" ");
+    const captalize = word
+      ?.map((word) => word?.at(0)?.toUpperCase() + word?.slice(1))
+      ?.join(" ");
+    return captalize;
+  }, [searchParams]);
+
+  //tips data filter by programing language
+  useEffect(() => {
+    if (!query) return;
+    const newArray = tipData.slice().filter((tip) => {
+      return (
+        tip.title.includes(query) ||
+        tip.tag.includes(query) ||
+        tip.description.includes(query)
+      );
+    });
+    setTips(newArray)
+  }, [tipData, query]);
+
   return (
     <>
       <header className="w-full h-[500px] flex flex-col-reverse md:flex-row justify-center items-center md:justify-between">
@@ -15,7 +45,8 @@ export default function Home() {
         <img src={hero} className="min-h-96  md:w-1/2" />
       </header>
       <div className="flex flex-wrap justify-evenly gap-5 bg-gray-950 p-4 mt-10">
-        {tips.map((tip, index) => (
+        {!tips.length && <EmptyData/>}
+        {tips.length && tips.map((tip, index) => (
           <TipsCard
             key={index}
             image={tip.image}
@@ -29,8 +60,8 @@ export default function Home() {
   );
 }
 
-export async function loader(){
-  const request = await fetch("http://localhost:3000/data");
-  const response = await request.json();
-  return response
+export async function loader({ params }) {
+  // const request = await fetch("http://localhost:3000/data");
+  // const response = await request.json();
+  return jsonData.data;
 }
