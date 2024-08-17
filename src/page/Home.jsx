@@ -5,6 +5,7 @@ import jsonData from "../../db.json";
 import { useSearchParams } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
 import EmptyData from "../components/Empty-data";
+import image from "../assets/Images/3.jpg"
 
 export default function Home() {
   const [searchParams] = useSearchParams();
@@ -49,7 +50,8 @@ export default function Home() {
         {tips.length && tips.map((tip, index) => (
           <TipsCard
             key={index}
-            image={tip.image}
+            // image={tip.image}
+            image={image}
             title={tip.title}
             tag={tip.tag}
             description={tip.description}

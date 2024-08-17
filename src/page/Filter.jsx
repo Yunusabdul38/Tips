@@ -3,7 +3,7 @@ import TipsCard from "../components/tips-card";
 import { Form, useSearchParams, useSubmit } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
 import EmptyData from "../components/Empty-data";
-
+import image from "../assets/Images/13.jpg"
 export default function Filter() {
   const [searchParams] = useSearchParams();
   const data = useRouteLoaderData("root");
@@ -139,7 +139,8 @@ export default function Filter() {
           tips.map((tip, index) => (
             <TipsCard
               key={index}
-              image={tip.image}
+               // image={tip.image}
+            image={image}
               title={tip.title}
               tag={tip.tag}
               description={tip.description}
