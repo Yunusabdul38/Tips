@@ -133,7 +133,7 @@ export default function Filter() {
           </ul>
         </Form>
       </div>
-      <aside className="border flex flex-wrap md:grid-cols-3  justify-evenly gap-5 p-4 bg-slate-300  overflow-auto">
+      <aside className="border flex flex-wrap  justify-evenly gap-5 p-4 bg-slate-300  overflow-auto">
         {!tips.length && <EmptyData />}
         {tips.length > 0 &&
           tips.map((tip, index) => (
