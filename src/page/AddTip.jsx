@@ -1,6 +1,6 @@
 import { Form, useRouteLoaderData } from "react-router-dom";
 import TipsCard from "../components/tips-card";
-
+import image from "../assets/Images/9.jpg"
 export default function AddTip() {
   const data = useRouteLoaderData("root");
   const tip = [data[0],data[1],data[2]]
@@ -163,7 +163,8 @@ export default function AddTip() {
     { tip.map((tip, index) => (
           <TipsCard
             key={index}
-            image={tip.image}
+            // image={tip.image}
+            image={image}
             title={tip.title}
             tag={tip.tag}
             description={tip.description}

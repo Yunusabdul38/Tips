@@ -1,7 +1,7 @@
 {
   "data": [
     {
-      "image": "./src/assets/Images/15.jpg",
+      "image": "./src/assets/15.jpg",
       "title": "Mastering Loops",
       "tag": "Python",
       "description": "Learn to use loops effectively in Python to automate repetitive tasks."
