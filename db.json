@@ -1,7 +1,7 @@
 {
   "data": [
     {
-      "image": "./src/assets/15.jpg",
+      "image": "https://tips-blog-eight.vercel.app/src/assets/15.jpg",
       "title": "Mastering Loops",
       "tag": "Python",
       "description": "Learn to use loops effectively in Python to automate repetitive tasks."
