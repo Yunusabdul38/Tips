@@ -1,8 +1,9 @@
 import { Form, useRouteLoaderData } from "react-router-dom";
 import TipsCard from "../components/tips-card";
 import image from "../assets/Images/9.jpg"
+import { card } from "../model/tips-card-model";
 export default function AddTip() {
-  const data = useRouteLoaderData("root");
+  const data = useRouteLoaderData("root") as card[];
   const tip = [data[0],data[1],data[2]]
   return (
     <>
@@ -185,5 +186,6 @@ export const action = async ({request})=>{
     description:data.get("description")
   }
 
-  console.log(request,data.get("image"))
+  console.log(request,data, userData)
+  return null
 }

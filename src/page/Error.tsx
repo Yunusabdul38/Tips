@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { useRouteError } from "react-router-dom";
 export default function Error() {
-  const error = useRouteError()
+  const error:any = useRouteError()
+  console.log(error)
   return (
     <section className="bg-slate-50 h-screen flex justify-center items-center">
       <div className="text-center bg-[url(https://media.istockphoto.com/id/1389512831/photo/the-word-oops-in-3d.webp?b=1&s=170667a&w=0&k=20&c=4of8IbvMC7g8Oaur6hBfyvFDtbgTpNdkcSAU0q_2olA=)] bg-cover p-5 bg-right text-emerald-950">

@@ -1,11 +1,11 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home, { loader as tipsdata } from "./page/Home.jsx";
-import Error from "./page/Error.jsx";
-import AddTip, { action as formAction } from "./page/AddTip.jsx";
-import Filter from "./page/Filter.jsx";
-import App from './App.jsx'
+import Home, { loader as tipsdata } from "./page/Home.js";
+import Error from "./page/Error.js";
+import AddTip, { action as formAction } from "./page/AddTip.js";
+import Filter from "./page/Filter.js";
+import App from './App.js'
 import './index.css'
 
 const router = createBrowserRouter([
@@ -29,13 +29,17 @@ const router = createBrowserRouter([
         path: "/filter",
         element: <Filter/>,
       },
+      {
+        path:"/:id",
+        element:<h1>hello world</h1>
+      }
     ],
   },
 ]);
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById('root')!).render(
   <StrictMode>
         <RouterProvider router={router} />
-  </StrictMode>,
+  </StrictMode>
 )
 

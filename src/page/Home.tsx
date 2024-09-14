@@ -6,10 +6,11 @@ import { useSearchParams } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
 import EmptyData from "../components/Empty-data";
 import image from "../assets/Images/3.jpg"
+import { card } from "../model/tips-card-model";
 
 export default function Home() {
   const [searchParams] = useSearchParams();
-  const tipData = useRouteLoaderData("root");
+  const tipData= useRouteLoaderData("root") as card[];
   const [tips, setTips] = useState(tipData);
   
   const query = useMemo(() => {
@@ -26,7 +27,7 @@ export default function Home() {
   //tips data filter by programing language
   useEffect(() => {
     if (!query) return;
-    const newArray = tipData.slice().filter((tip) => {
+    const newArray = tips.slice().filter((tip) => {
       return (
         tip.title.includes(query) ||
         tip.tag.includes(query) ||
@@ -62,7 +63,7 @@ export default function Home() {
   );
 }
 
-export async function loader({ params }) {
+export async function loader() {
   // const request = await fetch("http://localhost:3000/data");
   // const response = await request.json();
   return jsonData.data;

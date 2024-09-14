@@ -1,11 +1,12 @@
-import cardImage from "../assets/nextjs.png";
+import { FC } from "react";
 import { motion } from "framer-motion";
-
+import { card } from "../model/tips-card-model";
 const item = {
   show: { opacity: 1, scale: 1,x:0 },
   hid: { opacity: 0, scale: 0 },
 };
-export default function TipsCard({image,title,tag,description}) {
+const TipsCard: FC<card> =(props)=> {
+  const { title, tag, description, image } = props;
   return (
     <motion.div
       className="bg-slate-50 text-slate-900 border rounded-lg min-h-72 h-auto max-h-96 max-w-80 cursor-pointer"
@@ -25,3 +26,5 @@ export default function TipsCard({image,title,tag,description}) {
     </motion.div>
   );
 }
+
+export default TipsCard

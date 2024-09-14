@@ -1,4 +1,4 @@
-import hero from "../assets/PNG/3 SCENE.png";
+import hero from "../assets/PNG/3_SCENE.png";
 
 export default function EmptyData() {
   return (

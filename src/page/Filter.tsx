@@ -3,10 +3,12 @@ import TipsCard from "../components/tips-card";
 import { Form, useSearchParams, useSubmit } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
 import EmptyData from "../components/Empty-data";
-import image from "../assets/Images/13.jpg"
+import image from "../assets/images/laptop.jpg"
+import { card } from "../model/tips-card-model";
+
 export default function Filter() {
   const [searchParams] = useSearchParams();
-  const data = useRouteLoaderData("root");
+  const data = useRouteLoaderData("root") as card[];
   const [tips, setTips] = useState(data);
 
   let submit = useSubmit();
