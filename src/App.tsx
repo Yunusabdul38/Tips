@@ -16,22 +16,22 @@ function App() {
             <h1 className="uppercase text-2xl text-indigo-950 font-extrabold">
               <Link to="/">indigo</Link>
             </h1>
-            <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0">
+            <ul className="flex gap-4 flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0">
               <NavLink
                 to="/"
-                className="cursor-pointer hover:bg-blue-950 hover:w-fit p-1 px-2 hover:rounded hover:text-sky-500 hover:transition bg-blue-950 w-fit p-1 px-2 rounded"
+                className="cursor-pointer hover:text-sky-500 hover:transition"
               >
                 <li>Home</li>
               </NavLink>
               <NavLink
                 to="./add-tip"
-                className="cursor-pointer hover:bg-blue-950 hover:w-fit p-1 px-2 hover:rounded hover:text-sky-500 hover:transition bg-blue-950 w-fit p-1 px-2 rounded"
+                className="cursor-pointer hover:text-sky-500 hover:transition"
               >
                 <li>Add Tip</li>
               </NavLink>
               <NavLink
                 to="./filter"
-                className="cursor-pointer hover:bg-blue-950 hover:w-fit p-1 px-2 hover:rounded hover:text-sky-500 hover:transition bg-blue-950 w-fit p-1 px-2 rounded"
+                className="cursor-pointer hover:text-sky-500 hover:transition"
               >
                 <li>filter</li>
               </NavLink>
