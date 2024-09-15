@@ -3,7 +3,7 @@ import TipsCard from "../components/tips-card";
 import { Form, useSearchParams, useSubmit } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
 import EmptyData from "../components/Empty-data";
-import image from "../assets/images/laptop.jpg"
+import image from "../assets/images/7.jpg"
 import { card } from "../model/tips-card-model";
 
 export default function Filter() {
